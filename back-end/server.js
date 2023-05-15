@@ -2,6 +2,7 @@ require('dotenv').config()
 const express = require('express')
 const mongoose = require('mongoose')
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const productRoute = require('./routes/productRoute')
 const userRoute = require('./routes/userRoute')
@@ -16,6 +17,7 @@ mongoose.connect(process.env.MONGODB_URI_LOCAL)
 .catch(err => console.log(err)) 
 
 const app = express()
+app.use(cors())
 app.use(bodyParser.urlencoded({extended: true}))
 
 app.get('/api/keys/paypal', (req, res) => {

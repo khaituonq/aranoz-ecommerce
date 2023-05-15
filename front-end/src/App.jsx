@@ -19,8 +19,10 @@ import Shipping from './screens/shop/Shipping'
 import Search  from './screens/shop/Search'
 import DashboardOrderList from './screens/dashboard/DashboardOrderList'
 import Success from './screens/shop/Success'
+import axios from 'axios'
 
 function App() {
+  axios.defaults.baseURL = 'https://aranoz-api.onrender.com'
   return (
     <BrowserRouter>
       <ToastContainer/>
