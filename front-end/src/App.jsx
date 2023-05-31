@@ -22,7 +22,8 @@ import Success from './screens/shop/Success'
 import axios from 'axios'
 
 function App() {
-  axios.defaults.baseURL = 'https://aranoz-api.onrender.com'
+  // axios.defaults.baseURL = 'https://aranoz-api.onrender.com'
+  axios.defaults.baseURL = 'http://localhost:5000'
   return (
     <BrowserRouter>
       <ToastContainer/>

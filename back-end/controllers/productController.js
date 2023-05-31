@@ -2,16 +2,15 @@ const asyncHandler = require('express-async-handler')
 
 const Product = require('../models/productModel')
 
-const PAGE_SIZE = 4
 
 module.exports = {
   getProductList: asyncHandler(async (req, res) => {
-    const products = await Product.find()
+    const products = await Product.find().limit(9)
     res.send(products)
   }),
 
   getBannerList: asyncHandler(async (req, res) => {
-    const products = await Product.find({bannerUsage: true})
+    const products = await Product.find({bannerUsage: true}).sort({"createdAt": -1})
     res.send(products)
   }),
 
@@ -122,7 +121,7 @@ module.exports = {
 
   getProductByAdmin: asyncHandler(async (req, res) => {
     const page = req.query.page || 1
-    const pageSize = req.query.pageSize || 6
+    const pageSize = req.query.pageSize || 3
     const product = await Product.find().skip(pageSize * (page - 1)).limit(pageSize).sort({"createdAt": -1})
     const countProducts = await Product.countDocuments()
     res.send({product, countProducts, page, pages : Math.ceil(countProducts / pageSize)})

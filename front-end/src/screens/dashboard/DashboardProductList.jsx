@@ -26,6 +26,7 @@ const reducer = (state, action) => {
         products: action.payload.product,
         page: action.payload.page,
         pages: action.payload.pages,
+        productCount: action.payload.countProducts,
         loading: false
       }
     case 'FETCH_FAIL':
@@ -53,6 +54,7 @@ const reducer = (state, action) => {
 const DashboardProduct = () => {
   const [
     {
+      productCount,
       loading, 
       error,
       products, 
@@ -67,7 +69,6 @@ const DashboardProduct = () => {
   const { search } = useLocation()
   const sp = new URLSearchParams(search)
   const page = sp.get('page') || 1
-
 
 
  /* The `useEffect` hook is used to fetch data from the server and update the state of the component.
@@ -186,7 +187,7 @@ const DashboardProduct = () => {
       {/* Search FORM */}
 
       <div className="d-flex align-items-center justify-content-between result-page">
-        <h5>{products?.length} result (page {page}/{pages})</h5>
+        <h5>{productCount} result (page {page}/{pages})</h5>
         <button onClick={addProduct} className='d-flex gap-2 align-items-center'><span>Add</span><HiPlus/></button>
       </div>
 
@@ -220,7 +221,7 @@ const DashboardProduct = () => {
 
               <tbody>
                 {products?.map((product, index) => (
-                  <tr key={index}>
+                  <tr key={index} >
                     <th valign='middle'>{index + 1}</th>
                     <td align='center' valign='middle'>
                       <Switch 

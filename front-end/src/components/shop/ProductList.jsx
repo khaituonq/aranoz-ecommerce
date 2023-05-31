@@ -1,10 +1,11 @@
 import axios from 'axios'
-import { Col, Container, Row } from "react-bootstrap"
+import { Button, Col, Container, Row } from "react-bootstrap"
 
 import { useEffect, useReducer } from "react"
 import LoadingBox from '../LoadingBox'
 import MessageBox from '../MessageBox'
 import Card from "./Card"
+import { Link } from 'react-router-dom'
 
 const reducer = (state, action) => {
   switch (action.type) {
@@ -50,6 +51,9 @@ const ProductList = () => {
                 <Card product={product}/>
               </Col>
             ))}
+            <Col sm={12}>
+              <Link to="/search" className='btn btn-lg btn-dark' style={{width: '200px', marginTop: '40px'}} >More...</Link>
+            </Col>
           </Row>
         )}
     </Container>
