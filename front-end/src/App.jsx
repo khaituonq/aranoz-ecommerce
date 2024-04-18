@@ -22,7 +22,7 @@ import Success from './screens/shop/Success'
 import axios from 'axios'
 
 function App() {
-  axios.defaults.baseURL = 'https://aranoz-api.onrender.com'
+  axios.defaults.baseURL = 'https://aranoz-api.vercel.app'
   return (
     <BrowserRouter>
       <ToastContainer/>
